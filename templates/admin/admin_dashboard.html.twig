@@ -1,0 +1,190 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Admin | Dashboard
+{% endblock %}
+
+{% block body %}
+	<script src="{{asset('js/modale.js')}}"></script>
+	<div class="container py-5">
+
+		<p class="display-6 color-title roboto fw-200 text-center py-5">Administration</p>
+
+		<button class="justify-content-center min-width-250 d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" data-toggle="modal" data-target="#new-article-modal">
+			<svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.12903 15.0769C8.12903 14.6521 8.47565 14.3077 8.90323 14.3077H13.0323C13.4598 14.3077 13.8065 14.6521 13.8065 15.0769C13.8065 15.5018 13.4598 15.8462 13.0323 15.8462H8.90323C8.47565 15.8462 8.12903 15.5018 8.12903 15.0769Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9677 17.8974C10.5402 17.8974 10.1935 17.553 10.1935 17.1282V13.0256C10.1935 12.6008 10.5402 12.2564 10.9677 12.2564C11.3953 12.2564 11.7419 12.6008 11.7419 13.0256V17.1282C11.7419 17.553 11.3953 17.8974 10.9677 17.8974Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.53846C10.4751 3.53846 8.42753 3.70582 6.99542 3.8447C6.40117 3.90233 5.93741 4.3731 5.89141 4.96993C5.749 6.81754 5.54839 9.81282 5.54839 12C5.54839 14.1872 5.749 17.1825 5.89141 19.0301C5.93741 19.6269 6.40117 20.0977 6.99542 20.1553C8.42753 20.2942 10.4751 20.4615 12 20.4615C13.5249 20.4615 15.5725 20.2942 17.0046 20.1553C17.5988 20.0977 18.0626 19.6269 18.1086 19.0301C18.251 17.1825 18.4516 14.1872 18.4516 12C18.4516 11.2947 18.4307 10.5036 18.3975 9.69231H15.0976L15.0968 8.92308L15.0968 8.15385H18.321C18.1302 5.71619 16.228 3.7745 13.8065 3.59594V6.8718C13.8065 7.57985 14.3842 8.15385 15.0968 8.15385L15.0968 8.92308L15.0976 9.69231C13.5298 9.69231 12.2581 8.42952 12.2581 6.8718V3.53997C12.1705 3.53898 12.0844 3.53846 12 3.53846ZM13.0569 2.02069C12.6911 2.00756 12.3351 2 12 2C10.3935 2 8.28091 2.17427 6.84502 2.31351C5.49709 2.44423 4.45055 3.51605 4.34754 4.85245C4.20508 6.70071 4 9.74813 4 12C4 14.2519 4.20508 17.2993 4.34754 19.1475C4.45055 20.484 5.49709 21.5558 6.84502 21.6865C8.28091 21.8257 10.3935 22 12 22C13.6065 22 15.7191 21.8257 17.155 21.6865C18.5029 21.5558 19.5495 20.484 19.6525 19.1475C19.7949 17.2993 20 14.2519 20 12C20 11.0519 19.9637 9.9656 19.9114 8.8902C19.9112 8.88689 19.911 8.88359 19.9109 8.8803C19.8996 8.64894 19.8876 8.41812 19.875 8.1893C19.6948 4.90999 17.1178 2.22743 13.7827 2.05298C13.5417 2.04037 13.3017 2.02954 13.0659 2.02102" fill="white"/>
+                </svg>
+                
+			Créer un article
+
+
+		</button>
+		<br>
+		<button onclick={{"createCategory()"}} class="justify-content-center min-width-250 d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" data-toggle="modal" data-target="#new-category-modal" >
+			<svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 9.69231C9.80429 9.69231 6.79854 9.86404 4.95178 9.98536C4.35535 10.0245 3.8832 10.4754 3.81879 11.0569C3.68541 12.2608 3.53846 13.8676 3.53846 15.0769C3.53846 16.2862 3.68541 17.8931 3.81879 19.097C3.8832 19.6784 4.35535 20.1293 4.95178 20.1685C6.79854 20.2898 9.80429 20.4615 12 20.4615C14.1957 20.4615 17.2015 20.2898 19.0482 20.1685C19.6447 20.1293 20.1168 19.6784 20.1812 19.097C20.3146 17.8931 20.4615 16.2862 20.4615 15.0769C20.4615 13.8676 20.3146 12.2608 20.1812 11.0569C20.1168 10.4754 19.6446 10.0245 19.0482 9.98536C17.2015 9.86404 14.1957 9.69231 12 9.69231ZM4.85093 8.4502C6.69825 8.32885 9.74878 8.15385 12 8.15385C14.2512 8.15385 17.3018 8.32885 19.1491 8.4502C20.477 8.53744 21.5624 9.55217 21.7103 10.8875C21.8444 12.0977 22 13.7766 22 15.0769C22 16.3772 21.8444 18.0561 21.7103 19.2664C21.5624 20.6017 20.477 21.6164 19.1491 21.7036C17.3018 21.825 14.2512 22 12 22C9.74878 22 6.69825 21.825 4.85093 21.7036C3.52304 21.6164 2.43761 20.6017 2.28968 19.2664C2.1556 18.0561 2 16.3772 2 15.0769C2 13.7766 2.1556 12.0978 2.28968 10.8875C2.43761 9.55217 3.52304 8.53744 4.85093 8.4502Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.61539C10.3995 6.61539 8.248 6.69061 6.79989 6.75004C6.21382 6.77409 5.76196 7.18453 5.69116 7.70434C5.63175 8.14046 5.58974 8.57653 5.58974 8.92308C5.58974 9.34791 5.24535 9.69231 4.82051 9.69231C4.39568 9.69231 4.05128 9.34791 4.05128 8.92308C4.05128 8.47393 4.1039 7.95828 4.16677 7.4967C4.34645 6.17764 5.4686 5.26491 6.73681 5.21287C8.18625 5.15339 10.3652 5.07692 12 5.07692C13.6348 5.07692 15.8138 5.15339 17.2632 5.21287C18.5314 5.26491 19.6536 6.17764 19.8332 7.4967C19.8961 7.95828 19.9487 8.47393 19.9487 8.92308C19.9487 9.34791 19.6043 9.69231 19.1795 9.69231C18.7547 9.69231 18.4103 9.34791 18.4103 8.92308C18.4103 8.57653 18.3682 8.14046 18.3088 7.70434C18.238 7.18453 17.7862 6.77409 17.2001 6.75004C15.752 6.69061 13.6005 6.61539 12 6.61539Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.53846C11.0449 3.53846 9.80589 3.59168 8.81793 3.64423C8.22109 3.67598 7.75986 4.11837 7.70772 4.67291C7.6686 5.08895 7.64103 5.50609 7.64103 5.84615C7.64103 6.27099 7.29663 6.61539 6.8718 6.61539C6.44696 6.61539 6.10256 6.27099 6.10256 5.84615C6.10256 5.43606 6.13507 4.96436 6.17601 4.52889C6.30333 3.17484 7.41874 2.17801 8.73621 2.10794C9.72881 2.05515 11.0018 2 12 2C12.9982 2 14.2712 2.05515 15.2638 2.10794C16.5813 2.17801 17.6967 3.17484 17.824 4.52889C17.8649 4.96436 17.8974 5.43606 17.8974 5.84615C17.8974 6.27099 17.553 6.61539 17.1282 6.61539C16.7034 6.61539 16.359 6.27099 16.359 5.84615C16.359 5.50609 16.3314 5.08895 16.2923 4.67291C16.2401 4.11837 15.7789 3.67598 15.1821 3.64423C14.1941 3.59168 12.9551 3.53846 12 3.53846Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.17949 15.0769C9.17949 14.6521 9.52388 14.3077 9.94872 14.3077H14.0513C14.4761 14.3077 14.8205 14.6521 14.8205 15.0769C14.8205 15.5018 14.4761 15.8462 14.0513 15.8462H9.94872C9.52388 15.8462 9.17949 15.5018 9.17949 15.0769Z" fill="white"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 17.8974C11.5752 17.8974 11.2308 17.553 11.2308 17.1282V13.0256C11.2308 12.6008 11.5752 12.2564 12 12.2564C12.4248 12.2564 12.7692 12.6008 12.7692 13.0256V17.1282C12.7692 17.553 12.4248 17.8974 12 17.8974Z" fill="white"/>
+                </svg>
+
+			Créer une categorie
+
+
+		</button>
+		<br>
+		<button onclick={{"deleteCategory()"}} class="justify-content-center min-width-250 d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" data-toggle="modal" data-target="#delete-category-modal" >
+			<svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path fill="none" d="M0 0h24v24H0z"/>
+                    <path fill="white" d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z"/>
+                </g>
+            </svg>
+			Supprimer une Categorie
+
+
+		</button>
+		<br>
+		<a href="{{path('app_comments')}}">
+			<button onclick={{"deleteCategory()"}} class="justify-content-center min-width-250 d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" >
+
+				<svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.25 12.75L14.25 12.75M8.25 9.75L11.25 9.75M5.25 5.25H18.75C19.5784 5.25 20.25 5.92157 20.25 6.75V15.75C20.25 16.5784 19.5784 17.25 18.75 17.25H11.25L6.75 21V17.25H5.25C4.42157 17.25 3.75 16.5784 3.75 15.75V6.75C3.75 5.92157 4.42157 5.25 5.25 5.25Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+				Gérer les commentaires
+			</button>
+		</a>
+        		<br>
+		<a href="{{path('loadcontact')}}">
+			<button onclick={{"deleteCategory()"}} class="justify-content-center min-width-250 d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" >
+
+				<svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.45455C9.73557 5.45455 6.65128 5.64867 4.69268 5.79141C4.04222 5.83882 3.53846 6.35372 3.53846 6.98262V7.69328L11.3774 11.8107C11.7646 12.0141 12.2354 12.0141 12.6226 11.8107L20.4615 7.69328V6.98261C20.4615 6.35372 19.9578 5.83882 19.3073 5.79141C17.3487 5.64867 14.2644 5.45455 12 5.45455ZM20.4615 9.35722L13.3698 13.0822C12.5179 13.5296 11.4821 13.5296 10.6302 13.0822L3.53846 9.35722V17.0174C3.53846 17.6463 4.04222 18.1612 4.69268 18.2086C6.65128 18.3513 9.73557 18.5455 12 18.5455C14.2644 18.5455 17.3487 18.3513 19.3073 18.2086C19.9578 18.1612 20.4615 17.6463 20.4615 17.0174V9.35722ZM4.57444 4.34117C6.53421 4.19834 9.67068 4 12 4C14.3293 4 17.4658 4.19834 19.4256 4.34117C20.8902 4.44791 22 5.60588 22 6.98261V17.0174C22 18.3941 20.8902 19.5521 19.4256 19.6588C17.4658 19.8017 14.3293 20 12 20C9.67068 20 6.53421 19.8017 4.57444 19.6588C3.10982 19.5521 2 18.3941 2 17.0174V6.98262C2 5.60589 3.10982 4.44791 4.57444 4.34117Z" fill="white"/>
+                    </svg>
+				Mes demandes de contact
+
+
+			</button>
+		</a>
+
+		<table class="table table-hover my-5">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Titre</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in RecipeList %}
+					<tr>
+						<td>{{article.id}}</td>
+						<td>{{article.name}}</td>
+						<td>{{article.category.name}}</td>
+						<td>
+							<button class="edit-btn" data-toggle="modal" data-target="#edit-article-modal" onclick={{"loadForm(#{article.id})"}}>Modifier</button>
+						</td>
+						<td>
+							<button class="delete-btn" data-toggle="modal" data-target="#delete-article-modal" onclick={{"deleteRecipe(#{article.id})"}}>Supprimer</button>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="modal fade" id="new-article-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Créer un article</h5>
+					<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{{form_start(form)}}
+					{{form_row(form)}}
+					{{form_end(form)}}
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="edit-article-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Modifier un article</h5>
+					<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body superFormContainer"></div>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="delete-article-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Supprimer un article</h5>
+				<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Cette action est irréversible, voulez-vous continuer ?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+				<button type="button" href="" class="btn btn-primary">
+					<a class="deleter" href="">Confirmer</a>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="new-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Créer une catégorie</h5>
+					<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body CategoryFormContainer"></div>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="delete-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Supprimer une catégorie</h5>
+					<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body DeleteCategoryFormContainer"></div>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

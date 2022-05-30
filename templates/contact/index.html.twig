@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Contacter nous
+{% endblock %}
+
+{% block body %}
+<div class="container mx-auto p-5 m-4">
+    <form action="contact" method="post">
+        {{form_row(form)}}
+        {{form_end(form)}}
+    </form>
+</div>
+
+
+{% endblock %}

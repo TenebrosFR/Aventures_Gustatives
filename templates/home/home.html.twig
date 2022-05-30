@@ -1,0 +1,124 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Accueil
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mx-auto" style="padding-top: 60px">
+		<div class="row d-flex justify-content-center">
+			<div class="col-9 py-5">
+				<p class="display-6 color-title roboto fw-200 text-center mb-5">Bienvenue sur Aventures Gustatives</p>
+				<p class="text-align-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.</p>
+			</div>
+		</div>
+
+		<div class="row gx-5 d-flex justify-content-center">
+			<div class="col-md-3 col-9">
+					<p class="playfair-italic fs-4">Bonjour</p>
+					<hr class="opacity-100" style="width: 2rem; color: black"/>
+					<p class="text-align-justify fs-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+
+					<div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+						<hr class="opacity-75" style="width: 45%; color: #B2996B"/>
+						<svg
+								width="20px"
+								height="20px"
+								fill="#B2996B"
+								viewBox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+						<hr class="opacity-75" style="width: 45%; color: #B2996B"/>
+					</div>
+
+					<p class="playfair-italic fs-1 text-center">Élu meilleur blog culinaire 2022</p>
+
+				<hr class="mt-5 mb-4"/>
+				<div class="d-flex align-items-center justify-content-between social-media-block">
+					<img src="{{ asset('build/images/instagram-logo.png') }}" />
+					<img src="{{ asset('build/images/facebook-logo.png') }}" />
+					<img src="{{ asset('build/images/pinterest-logo.png') }}" />
+					<img src="{{ asset('build/images/youtube-logo.png') }}" />
+				</div>
+				<hr class="my-4"/>
+
+				<div>
+					<p class="playfair-italic fs-4">Ma dernière recette</p>
+					{% set FirstRecipe = (RecipeList|first) %}
+					<img
+							src="{{ asset("uploads/imagesRecipe/#{FirstRecipe.image}") }}"
+							class="border p-2"
+							style="height: 200px; width: 100%; object-fit: cover"
+					/>
+					<p class="fs-6 fw-100 text-align-justify my-3 clip-out-text">{{FirstRecipe.description}}</p>
+					<a href="{{path('recipe_detail', {id: FirstRecipe.id })}}">
+						<button class="btn-secondary fw-300 rounded-pill py-2 small mb-5">Voir la recette</button>
+					</a>
+				</div>
+			</div>
+			
+			<div class="col-md-6 col-9 mb-5">
+			{% for Recipe in RecipeList %}
+				<div class="border p-2 mb-2">
+					<img
+							src="{{ asset("uploads/imagesRecipe/#{Recipe.image}") }}"
+							style="height: 500px; width: 100%; object-fit: cover"
+					/>
+				</div>
+				<div class="border p-2">
+					<div class="p-2">
+						<div class="d-flex align-items-center fs-6" style="gap: 1rem">
+							<div>
+								<svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#84947B" class="bi bi-person-fill">
+									<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+								</svg>
+								<span class="ml-1" style="color: #84947B">{{Recipe.author.email}}</span>
+							</div>
+
+							<svg
+									width="8px"
+									height="8px"
+									fill="#84947B"
+									viewBox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+
+							<span style="color: #84947B">Le {{Recipe.date|date('d-m-Y')}}</span>
+
+							<svg
+									width="8px"
+									height="8px"
+									fill="#84947B"
+									viewBox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+
+							<span style="color: #84947B">{{Recipe.Category.name}}</span>
+						</div>
+
+						<div class="mb-4">
+							<p class="h4 mt-4">{{Recipe.name}}</p>
+							<p class="clip-out-text">{{Recipe.description}}</p>
+							<a href="{{path('recipe_detail', {id:Recipe.id})}}">
+								<button class="btn fw-300 rounded-pill py-3 small d-flex align-items-center justify-content-center w-50 mx-auto">Voir plus</button>
+							</a>
+						</div>
+						<hr class=""/>
+						<div class="d-flex align-items-center" style="gap: 1rem">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="18px" height="18px">
+								<path style="fill:#6B6B6B;" d="M218.953,400.504h265.506c15.398-0.194,27.722-12.821,27.537-28.219V28.219
+									C512.181,12.821,499.857,0.194,484.459,0H27.541C12.143,0.194-0.189,12.821,0.004,28.219v344.242
+									c-0.185,15.398,12.139,28.026,27.537,28.219h56.186L72.928,512l130.921-106.871C208.305,402.121,213.57,400.513,218.953,400.504z"/>
+									<g>
+										<rect x="99.075" y="93.722" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+										<rect x="99.075" y="184.866" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+										<rect x="99.075" y="274.595" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+									</g>
+							</svg>
+							<span>{{Recipe.Comments|length}} commentaires</span>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

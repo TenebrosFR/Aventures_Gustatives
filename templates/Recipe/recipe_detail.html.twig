@@ -1,0 +1,124 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Lorem ipsum
+{% endblock %}
+
+{% block body %}
+
+	<div class="container" style="padding-top: 100px">
+		<div class="row gx-5 d-flex justify-content-center mb-5">
+			<div class="col-12">
+				<div class="border p-5 my-5">
+					<div class="p-5">
+						<div class="d-flex align-items-center fs-6" style="gap: 1rem">
+							<div>
+								<svg width="16px" height="16px" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#84947B" class="bi bi-person-fill">
+									<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+								</svg>
+								<span class="ml-1" style="color: #84947B">{{Recipe.author.email}}</span>
+							</div>
+
+							<svg width="8px" height="8px" fill="#84947B" viewbox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+
+							<span style="color: #84947B">{{Recipe.date|date('d-m-Y')}}</span>
+
+							<svg width="8px" height="8px" fill="#84947B" viewbox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+
+							<span style="color: #84947B">{{Recipe.category.name}}</span>
+						</div>
+
+						<div class="mb-4">
+							<p class="h4 mt-4">{{Recipe.name}}</p>
+
+
+							<div class="my-5">
+								<img src='{{ asset("uploads/imagesRecipe/#{Recipe.image}") }}' style="max-height: 800px; width: 100%; object-fit: cover"/>
+							</div>
+
+
+							<p>
+								{{Recipe.description}}
+							</p>
+
+						</div>
+						<hr class="my-5"/>
+						<div class="d-flex align-items-center" style="gap: 1rem">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="18px" height="18px">
+								<path style="fill:#6B6B6B;" d="M218.953,400.504h265.506c15.398-0.194,27.722-12.821,27.537-28.219V28.219
+																																																																																																																					C512.181,12.821,499.857,0.194,484.459,0H27.541C12.143,0.194-0.189,12.821,0.004,28.219v344.242
+																																																																																																																					c-0.185,15.398,12.139,28.026,27.537,28.219h56.186L72.928,512l130.921-106.871C208.305,402.121,213.57,400.513,218.953,400.504z"/>
+								<g>
+									<rect x="99.075" y="93.722" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+									<rect x="99.075" y="184.866" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+									<rect x="99.075" y="274.595" style="fill:#FFFFFF;" width="319.291" height="32.002"/>
+								</g>
+							</svg>
+							<span>{{Comments|length}}
+								commentaires</span>
+						</div>
+						{% for Comment in Comments %}
+							<div class="mb-3">
+								<div class="d-flex align-items-center fs-6 pt-4 pb-2" style="gap: 1rem">
+									<div>
+										<svg width="16px" height="16px" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#84947B" class="bi bi-person-fill">
+											<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+										</svg>
+										<span class="ml-1" style="color: #84947B">Par
+											{{Comment.author.email}}</span>
+									</div>
+
+									<svg width="8px" height="8px" fill="#84947B" viewbox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+
+									<span style="color: #84947B">Le
+										{{Comment.date|date('d-m-Y')}}</span>
+								</div>
+
+								<p style="font-size: 0.8rem">
+									{{Comment.text}}
+								</p>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="border p-5 my-5">
+					<div class="px-5 py-2">
+						<div class="mb-4">
+							{% if is_granted('ROLE_USER') %}
+							<p class="h4 mt-4">Laisser un commentaire</p>
+							<hr class="my-5"/>
+							{{form_row(form)}}
+							{{form_end(form)}}
+							{% else %}
+							<div class="d-flex align-items-center">
+                                <svg class="mt-2" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.7931 10.9211C20.6897 9.57503 19.6552 8.53962 18.3103 8.43608C16.4483 8.229 13.9655 8.12546 12 8.12546C10.9655 8.12546 9.82759 8.12546 8.68965 8.229V5.74401C8.68965 4.50152 9.72414 3.46611 10.9655 3.46611H13.5517C14.5862 3.46611 15.4138 4.29444 15.4138 5.32985C15.4138 5.74401 15.7241 6.15818 16.2414 6.15818C16.7586 6.15818 17.069 5.84755 17.069 5.32985C17.069 3.46611 15.5172 2.01654 13.7586 2.01654H10.9655C8.7931 1.80945 7.03448 3.56965 7.03448 5.74401V8.33254C6.51724 8.33254 6.10345 8.43608 5.68966 8.43608C4.34483 8.53962 3.31034 9.57503 3.2069 10.9211C3.10345 12.06 3 13.8202 3 15.0627C3 16.3052 3.10345 17.9619 3.2069 19.2043C3.31034 20.5504 4.34483 21.5858 5.68966 21.6893C7.55172 21.8964 10.0345 22 12 22C13.9655 22 16.4483 21.7929 18.3103 21.6893C19.6552 21.5858 20.6897 20.5504 20.7931 19.2043C20.8966 18.0654 21 16.4087 21 15.0627C21 13.7167 20.8966 12.1636 20.7931 10.9211ZM12.8276 16.0981C12.8276 16.5123 12.5172 16.9264 12 16.9264C11.4828 16.9264 11.1724 16.6158 11.1724 16.0981V14.0273C11.1724 13.6131 11.4828 13.199 12 13.199C12.5172 13.199 12.8276 13.5096 12.8276 14.0273V16.0981Z" fill="black"/>
+                                    </svg>
+                                    
+                                <p class="h4 mt-4 px-3">Connectez-vous pour laisser un commentaire</p>
+                            </div>
+							{% endif %}
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row gx-5">
+					<p class="my-4 playfair-italic fs-1">Recettes récentes</p>
+					{% for LastRecipe in RecipeList %}
+					<div class="col-md-4 col-sm-6 col-12">
+						<img src='{{ asset("uploads/imagesRecipe/#{LastRecipe.image}") }}' class="border p-2" style="height: 200px; width: 100%; object-fit: cover"/>
+						<p class="fs-6 fw-100 text-align-justify my-3 clip-out-text">{{LastRecipe.name}}</p>
+						<a href="{{path('recipe_detail', {id: LastRecipe.id})}}">
+							<button class="btn-secondary fw-300 rounded-pill py-2 small mb-5">Voir la recette</button>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

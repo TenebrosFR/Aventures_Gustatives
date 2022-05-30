@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Contacter nous
+{% endblock %}
+
+{% block body %}
+	<script src="{{asset('js/contact.js')}}"></script>
+    
+<div class="container p-5">
+    <a href="{{path('dashboard')}}">
+        <button onclick={{"deleteCategory()"}} class="d-flex align-items-center bg-green text-white text-uppercase m-auto py-2 px-4 fs-6" style="gap: 10px; border: none; border-radius: 100px" >
+            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5303 18.5303C14.2374 18.8232 13.7626 18.8232 13.4697 18.5303L7.46967 12.5303C7.17678 12.2374 7.17678 11.7626 7.46967 11.4697L13.4697 5.46967C13.7626 5.17678 14.2374 5.17678 14.5303 5.46967C14.8232 5.76256 14.8232 6.23744 14.5303 6.53033L9.06066 12L14.5303 17.4697C14.8232 17.7626 14.8232 18.2374 14.5303 18.5303Z" fill="white"/>
+            </svg>
+            Retour
+        </button>
+    </a>
+    <table class="table table-hover my-5">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Email</th>
+					<th scope="col">Message</th>
+                    <th scope="col">Date</th>
+				</tr>
+			</thead>
+		<tbody>
+            {% for contact in ContactList %}
+                <tr>
+                    <td>{{contact.id}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.message|slice(0, 10)}} ...</td>
+                    <td>{{contact.date|date('d-m-Y')}}</td>
+                    <td>
+                        <button class="edit-btn" data-toggle="modal" data-target="#show" onclick="showFull('{{contact.message}}')" >Voir le message</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+					<button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+            <div class="modal-body content"></div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

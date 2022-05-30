@@ -1,0 +1,62 @@
+<div class="position-sticky pt-3 border-bottom" style="top: -80px; background-color: rgba(255,255,255, 0.9);">
+	<img class="d-flex mx-auto mb-5" style="object-fit: cover; width: 200px" src="{{ asset('build/images/logo.png') }} "/>
+	<p id="title" class="color-title roboto fw-200 text-center" style="font-size: 3rem; letter-spacing: 4px; padding-bottom: 1rem">Aventures Gustatives</p>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light position-sticky w-100 p-4 border-bottom" style="top: 0">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+
+	<div class="collapse navbar-collapse text-uppercase" id="navbarNav">
+		<ul class="navbar-nav mx-auto">
+			<li class="nav-item px-5">
+				<a class="nav-link" href="{{path('home')}}">Accueil</a>
+			</li>
+
+			<li class="nav-item px-5">
+				<a class="nav-link" href="{{path('recipes')}}">Recettes</a>
+			</li>
+
+			<li class="nav-item px-5">
+				<a class="nav-link" href="{{path('app_about')}}">A propos</a>
+			</li>
+
+			<li class="nav-item px-5">
+				<a class="nav-link" href="{{path('contact')}}">Contact</a>
+			</li>
+
+			<li class="nav-item px-5">
+			 	{% if is_granted('ROLE_USER') %}
+				<a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+				{% else %}
+				<a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+				{% endif %}
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+			<li class="nav-item px-5">
+				<a class="nav-link" href="{{path('dashboard')}}">Admin Dashboard</a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+</nav>
+
+<script type="text/javascript">
+
+	window.onscroll = function () {
+scrollFunction()
+};
+
+function scrollFunction() {
+if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+document.getElementById("title").style.fontSize = "1.3rem";
+document.getElementById("title").style.paddingBottom = "0";
+} else {
+document.getElementById("title").style.fontSize = "3rem";
+document.getElementById("title").style.paddingBottom = "1rem";
+}
+}
+</script>
