@@ -1,0 +1,23 @@
+# Blog_Symfony
+
+## Installation du projet
+composer install  
+
+npm i  
+
+npm run build
+
+## Modification du .env
+DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/aventures_gustatives?serverVersion=13&charset=utf8"
+
+
+## Ajouter la base de donnée
+php bin/console doctrine:database:create
+
+php bin/console make:migration
+
+php bin/console doctrine:migrations:migrate
+
+
+## Lancer le serveur
+symfony server:start
